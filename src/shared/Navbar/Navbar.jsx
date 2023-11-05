@@ -10,7 +10,9 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md" : "bg-sky-200 shadow-sm p-2 rounded-md"
+            isActive
+              ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+              : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
           }
           to="/"
         >
@@ -20,7 +22,9 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md" : "bg-sky-100 shadow-sm p-2 rounded-md"
+            isActive
+              ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+              : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
           }
           to="/services"
         >
@@ -36,9 +40,12 @@ const Navbar = () => {
 
   return (
     <div className="relative w-full bg-white">
-      <div className="mx-auto bg-blue-200 my-5 rounded-xl shadow-2xl border flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
+      <div className="mx-auto bg-blue-200 mt-5 rounded-xl shadow-2xl border flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2 bg-transparent">
-          <img src="" alt="logo" />
+          <img
+            src=""
+            alt="logo"
+          />
           <h1 className="text-3xl font-bold">RideSync</h1>
         </div>
         {/* large device */}
@@ -46,7 +53,6 @@ const Navbar = () => {
           <ul className="ml-12 inline-flex space-x-8">{menuItems}</ul>
         </div>
         <div className="hidden space-x-2 lg:block">
-       
           <button
             type="button"
             className="rounded-md border bg-blue-200 border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -102,7 +108,6 @@ const Navbar = () => {
                   <nav className="grid gap-y-4">{menuItems}</nav>
                 </div>
                 <div className="mt-3 space-y-2">
-                 
                   <button
                     type="button"
                     className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
