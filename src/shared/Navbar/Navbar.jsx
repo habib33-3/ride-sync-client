@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logOut } = useAuth();
 
   const menuItems = (
     <>
@@ -31,11 +33,23 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
+
+      {user && (
+        <li className="bg-sky-100 shadow-sm p-2 rounded-md">Dashboard</li>
+      )}
     </>
   );
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
@@ -50,15 +64,27 @@ const Navbar = () => {
         </div>
         {/* large device */}
         <div className="hidden grow items-start lg:flex">
-          <ul className="ml-12 inline-flex space-x-8">{menuItems}</ul>
+          <ul className="ml-12 flex items-center space-x-8">{menuItems}</ul>
         </div>
         <div className="hidden space-x-2 lg:block">
-          <button
-            type="button"
-            className="rounded-md border bg-blue-200 border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Log In
-          </button>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              type="button"
+              className="rounded-md border bg-red-600 border-black px-3 py-2 text-sm font-semibold active:scale-95 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-red-700 focus-visible:outline-black"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/login">
+              <button
+                type="button"
+                className="rounded-md border bg-blue-200 border-black px-3 py-2 text-sm font-semibold active:scale-95 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 hover:bg-blue-300 focus-visible:outline-black"
+              >
+                Log In
+              </button>
+            </Link>
+          )}
         </div>
 
         {/* small device */}
@@ -105,16 +131,16 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <nav className="grid gap-y-4">{menuItems}</nav>
+                  <nav className="grid gap-y-4 list-none">{menuItems}</nav>
                 </div>
-                <div className="mt-3 space-y-2">
+                <Link to="/login">
                   <button
                     type="button"
-                    className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    className="rounded-md border bg-blue-200 hover:bg-blue-300 border-black px-3 py-2 text-sm font-semibold active:scale-95 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     Log In
                   </button>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
