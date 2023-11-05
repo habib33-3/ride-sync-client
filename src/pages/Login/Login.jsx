@@ -2,6 +2,7 @@ import { ArrowRightCircle, EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import GoogleLogin from "../../components/Social/GoogleLogin";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -98,6 +99,7 @@ const Login = () => {
               </div>
             </div>
           </form>
+          <GoogleLogin/>
         </div>
       </div>
     </section>
