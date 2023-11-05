@@ -3,19 +3,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
-const Register = () => {
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [name, setName] = useState("");
-  const [pic, setPic] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { createUser } = useAuth();
+  const { login } = useAuth();
 
-  const handleRegister = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    console.log(name, pic, email, password);
-    createUser(email, password)
+    console.log(email, password);
+
+    login(email, password)
       .then((res) => {
         console.log(res.user);
       })
@@ -29,58 +28,22 @@ const Register = () => {
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
         <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
           <h2 className="text-center text-2xl font-bold leading-tight text-black">
-            Sign up to create account
+            Sign in to your account
           </h2>
           <p className="mt-2 text-center text-base text-gray-600">
-            Already have an account?{" "}
+            Don{"'"}t have an account?
             <Link
-              to="/login"
+              to="/register"
               className="font-medium text-black transition-all duration-200 hover:underline"
             >
-              Sign In
+              Register
             </Link>
           </p>
           <form
-            onSubmit={handleRegister}
+            onSubmit={handleLogin}
             className="mt-8"
           >
             <div className="space-y-5">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="text-base font-medium text-gray-900"
-                >
-                  Full Name{" "}
-                </label>
-                <div className="mt-2">
-                  <input
-                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    type="text"
-                    placeholder="Full Name"
-                    id="name"
-                    required
-                    onBlur={(e) => setName(e.target.value)}
-                  ></input>
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="pic"
-                  className="text-base font-medium text-gray-900"
-                >
-                  Profile Picture
-                </label>
-                <div className="mt-2">
-                  <input
-                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    type="text"
-                    placeholder="Photo URL"
-                    id="pic"
-                    required
-                    onBlur={(e) => setPic(e.target.value)}
-                  ></input>
-                </div>
-              </div>
               <div>
                 <label
                   htmlFor="email"
@@ -114,8 +77,8 @@ const Register = () => {
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     id="password"
-                    required
                     onBlur={(e) => setPassword(e.target.value)}
+                    required
                   ></input>
                   <button
                     className="absolute bottom-1/4 right-1 cursor-pointer"
@@ -130,7 +93,7 @@ const Register = () => {
                   type="submit"
                   className="inline-flex w-full items-center justify-center  rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80 active:transition-transform active:scale-90"
                 >
-                  Create Account <ArrowRightCircle className="ml-2 text-base" />
+                  Sign In <ArrowRightCircle className="ml-2 text-base" />
                 </button>
               </div>
             </div>
@@ -141,4 +104,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
