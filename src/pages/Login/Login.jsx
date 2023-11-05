@@ -1,13 +1,15 @@
 import { ArrowRightCircle, EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import GoogleLogin from "../../components/Social/GoogleLogin";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const { login } = useAuth();
 
@@ -18,9 +20,11 @@ const Login = () => {
     login(email, password)
       .then((res) => {
         console.log(res.user);
+        toast.success("Congratulations, You are logged in ");
+        navigate(location.state ? location?.state : "/");
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
@@ -99,7 +103,7 @@ const Login = () => {
               </div>
             </div>
           </form>
-          <GoogleLogin/>
+          <GoogleLogin />
         </div>
       </div>
     </section>

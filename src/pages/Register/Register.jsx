@@ -1,8 +1,9 @@
 import { ArrowRightCircle, EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import GoogleLogin from "../../components/Social/GoogleLogin";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,6 +11,7 @@ const Register = () => {
   const [pic, setPic] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate=useNavigate()
 
   const { createUser } = useAuth();
 
@@ -19,9 +21,11 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
+        toast.success("Registration Successful")
+        navigate("/")
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 

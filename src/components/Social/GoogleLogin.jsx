@@ -1,16 +1,21 @@
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
+  const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
         console.log(res.user);
+        toast.success("Congratulations, You are logged in ");
+        navigate("/");
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 

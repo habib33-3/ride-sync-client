@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,7 +47,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logOut()
-      .then()
+      .then(() => {
+        toast.success("You are logged out");
+      })
       .catch((err) => {
         console.log(err.message);
       });
