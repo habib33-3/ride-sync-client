@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
   const [serviceImg, setServiceImg] = useState("");
@@ -31,13 +32,17 @@ const AddService = () => {
     axios.post("/addService", product).then((data) => {
       if (data.data.insertedId) {
         toast.success("product added successfully");
-        e.target.reset();
+        // e.target.reset();
       }
     });
   };
 
   return (
     <div className="my-10">
+      <Helmet>
+        <title>RideSync|| Add Service</title>
+      </Helmet>
+
       <h1 className="text-5xl text-center font-bold ">Add Your Service</h1>
       <form
         onSubmit={handleAddProduct}
