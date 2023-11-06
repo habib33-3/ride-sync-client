@@ -6,6 +6,10 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import PrivateRouter from "./PrivateRouter";
 import AddService from "../pages/AddService/AddService";
+import AllServices from "../pages/AllServices/AllServices";
+import useAxios from "../hooks/useAxios";
+
+const axios = useAxios();
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +39,12 @@ export const router = createBrowserRouter([
             <AddService />
           </PrivateRouter>
         ),
+      },
+
+      {
+        path: "/services",
+        element: <AllServices />,
+        loader: () => axios.get("/services"),
       },
     ],
   },
