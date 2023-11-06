@@ -6,6 +6,7 @@ const AllServices = () => {
   const loadedService = useLoaderData();
   const [services, setServices] = useState(loadedService?.data);
   const [searchValue, setSearchValue] = useState("");
+  const [showAll, setShowAll] = useState(true);
   // console.log(services?.data)
 
   const handleSearch = (e) => {
@@ -14,7 +15,7 @@ const AllServices = () => {
     const filteredCard = services.filter(
       (item) => item.serviceName.toLowerCase() == searchValue.toLowerCase()
     );
-    console.log(filteredCard);
+
     setServices(filteredCard);
   };
 
@@ -54,13 +55,36 @@ const AllServices = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center mx-auto gap-6 w-11/12">
-        {services?.map((service) => (
-          <ServiceCard
-            key={service._id}
-            service={service}
-          />
-        ))}
+      <div>
+        {showAll ? (
+          <div>
+            <div className="grid grid-cols-1  items-center justify-center mx-auto gap-6 w-11/12">
+              {services?.map((service) => (
+                <ServiceCard
+                  key={service._id}
+                  service={service}
+                />
+              ))}
+            </div>
+            <div className="flex flex-col justify-center items-center my-5">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="w-full sm:w-auto whitespace-nowrap inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
+              >
+                Show All
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1  items-center justify-center mx-auto gap-6 w-11/12">
+            {services?.slice(0, 6).map((service) => (
+              <ServiceCard
+                key={service._id}
+                service={service}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
