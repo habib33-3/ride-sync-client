@@ -11,18 +11,22 @@ const Register = () => {
   const [pic, setPic] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  const { createUser } = useAuth();
+  const { createUser, updateUser } = useAuth();
 
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(name, pic, email, password);
     createUser(email, password)
-      .then((res) => {
-        console.log(res.user);
-        toast.success("Registration Successful")
-        navigate("/")
+      .then(() => {
+        updateUser(name, pic)
+          .then(() => {})
+          .catch((err) => {
+            toast.error(err.message);
+          });
+        toast.success("Registration Successful");
+        navigate("/");
       })
       .catch((err) => {
         toast.error(err.message);
