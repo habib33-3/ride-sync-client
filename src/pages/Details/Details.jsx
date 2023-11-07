@@ -3,6 +3,7 @@ import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import ProviderInfo from "./components/ProviderInfo/ProviderInfo";
+import ServiceDetails from "./components/ServiceDetails/ServiceDetails";
 
 const Details = () => {
   const axios = useAxios();
@@ -33,6 +34,10 @@ const Details = () => {
     <div className="max-w-6xl mx-auto mt-10">
       <div>
         <ProviderInfo service={service} />
+      </div>
+
+      <div>
+        <ServiceDetails service={service} />
       </div>
     </div>
   );

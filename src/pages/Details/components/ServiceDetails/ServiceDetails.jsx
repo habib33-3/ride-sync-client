@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
-const ServiceCard = ({ service }) => {
+const ServiceDetails = ({ service }) => {
   const {
     serviceImg,
     serviceName,
@@ -9,16 +8,15 @@ const ServiceCard = ({ service }) => {
     providerName,
     providerImg,
     servicePrice,
-    _id,
   } = service;
-  
+
   return (
     <div>
-      <div className="group flex flex-col lg:flex-row w-full lg:w-4/5 mx-auto bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] lg:p-5">
-        <div className="w-full lg:w-96 h-full mx-auto flex flex-col justify-center items-center  rounded-t-xl">
+      <div className="group flex flex-col  w-full lg:w-4/5 mx-auto bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] py-6 mt-10 lg:p-5">
+        <div className="w-full  h-full mx-auto flex flex-col justify-center items-center  rounded-t-xl">
           <img
             src={serviceImg}
-            className="w-11/12 lg:w-80 h-72 mx-auto"
+            className="w-11/12  h-72 mx-auto content-center"
             alt=""
           />
           <div className="mx-3">
@@ -37,11 +35,10 @@ const ServiceCard = ({ service }) => {
             </div>
           </div>
         </div>
-        <div className="w-3/4 mx-auto flex-col flex">
+        <div className="w-11/12 mx-auto flex-col flex">
           <div className="p-4 md:p-6">
             <span className="block mb-1 text-lg font-semibold  text-blue-600 dark:text-blue-500">
               Price: {servicePrice}$
-          
             </span>
             <h3 className="text-2xl text-center font-semibold capitalize text-gray-800 dark:text-gray-300 dark:hover:text-white">
               {serviceName}
@@ -51,11 +48,9 @@ const ServiceCard = ({ service }) => {
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <Link to={`/serviceDetails/${_id}`}>
-              <button className="mt-2 w-max mx-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center   mb-2 active:scale-95">
-                View Details
-              </button>
-            </Link>
+            <button className="mt-2 w-max mx-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center   mb-2 active:scale-95">
+              Book Now
+            </button>
           </div>
         </div>
       </div>
@@ -63,8 +58,8 @@ const ServiceCard = ({ service }) => {
   );
 };
 
-ServiceCard.propTypes = {
+ServiceDetails.propTypes = {
   service: PropTypes.object,
 };
 
-export default ServiceCard;
+export default ServiceDetails;
