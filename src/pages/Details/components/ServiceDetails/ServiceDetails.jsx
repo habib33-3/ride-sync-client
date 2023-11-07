@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
+import BookingModal from "./BookingModal/BookingModal";
+import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = ({ service }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const {
     serviceImg,
     serviceName,
@@ -10,8 +15,16 @@ const ServiceDetails = ({ service }) => {
     servicePrice,
   } = service;
 
+  const handleToggleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
+
   return (
     <div>
+      <Helmet>
+        <title>RideSync || {serviceName}</title>
+      </Helmet>
+
       <div className="group flex flex-col  w-full lg:w-4/5 mx-auto bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] py-6 mt-10 lg:p-5">
         <div className="w-full  h-full mx-auto flex flex-col justify-center items-center  rounded-t-xl">
           <img
@@ -48,10 +61,20 @@ const ServiceDetails = ({ service }) => {
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <button className="mt-2 w-max mx-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center   mb-2 active:scale-95">
+            <button
+              data-modal-target="booking-modal"
+              data-modal-toggle="booking-modal"
+              className="mt-2 w-max mx-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center   mb-2 active:scale-95"
+              onClick={handleToggleModal}
+            >
               Book Now
             </button>
           </div>
+          <BookingModal
+            isOpen={isModalOpen}
+            onClose={handleToggleModal}
+            service={service}
+          />
         </div>
       </div>
     </div>
