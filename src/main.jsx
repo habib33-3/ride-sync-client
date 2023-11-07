@@ -1,13 +1,13 @@
 import * as React from "react";
+import "./index.css";
 import * as ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import "./index.css";
 import { router } from "./router/Router";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./provider/AuthProvider";
 import { Toaster } from "react-hot-toast";
-import "react-loading-skeleton/dist/skeleton.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const queryClient = new QueryClient();
 

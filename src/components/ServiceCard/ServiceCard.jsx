@@ -11,11 +11,11 @@ const ServiceCard = ({ service }) => {
   } = service;
   return (
     <div>
-      <div className="group flex flex-col lg:flex-row max-w-6xl bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] p-5">
-        <div className="w-96 h-full mx-auto flex flex-col justify-center items-center  rounded-t-xl">
+      <div className="group flex flex-col lg:flex-row w-full lg:w-4/5 mx-auto bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] lg:p-5">
+        <div className="w-full lg:w-96 h-full mx-auto flex flex-col justify-center items-center  rounded-t-xl">
           <img
             src={serviceImg}
-            className=" w-80 h-72"
+            className="w-11/12 lg:w-80 h-72 mx-auto"
             alt=""
           />
           <div className="mx-3">
