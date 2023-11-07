@@ -55,9 +55,6 @@ export const router = createBrowserRouter([
             <Details />
           </PrivateRouter>
         ),
-        // loader: ({ params }) => {
-        //   axios.get(`/details/${params.id}`);
-        // },
       },
     ],
   },

@@ -10,6 +10,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../config/firebase.config";
+import useAxios from "../hooks/useAxios";
 
 export const AuthContext = createContext(null);
 
@@ -18,6 +19,8 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const axios = useAxios();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -39,11 +42,17 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       setUser(currentUser);
       console.log("user", user);
+
+      const userInfo = {
+        email: currentUser?.email,
+      };
+
+      axios.post("/createToken", userInfo).then((data) => console.log(data.data));
     });
     return () => {
       return () => unSubscribe();
     };
-  }, [user]);
+  }, [user, axios]);
 
   const logOut = () => {
     setLoading(true);

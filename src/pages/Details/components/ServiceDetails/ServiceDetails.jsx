@@ -4,7 +4,7 @@ import BookingModal from "./BookingModal/BookingModal";
 import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = ({ service }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const {
     serviceImg,
@@ -16,7 +16,7 @@ const ServiceDetails = ({ service }) => {
   } = service;
 
   const handleToggleModal = () => {
-    setModalOpen(!isModalOpen);
+    setModalOpen(!modalOpen);
   };
 
   return (
@@ -71,7 +71,7 @@ const ServiceDetails = ({ service }) => {
             </button>
           </div>
           <BookingModal
-            isOpen={isModalOpen}
+            isOpen={modalOpen}
             onClose={handleToggleModal}
             service={service}
           />
