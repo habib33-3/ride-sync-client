@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
   const {
@@ -8,6 +9,7 @@ const ServiceCard = ({ service }) => {
     providerName,
     providerImg,
     servicePrice,
+    _id,
   } = service;
   return (
     <div>
@@ -38,6 +40,7 @@ const ServiceCard = ({ service }) => {
           <div className="p-4 md:p-6">
             <span className="block mb-1 text-lg font-semibold  text-blue-600 dark:text-blue-500">
               Price: {servicePrice}$
+          
             </span>
             <h3 className="text-2xl text-center font-semibold capitalize text-gray-800 dark:text-gray-300 dark:hover:text-white">
               {serviceName}
@@ -46,9 +49,13 @@ const ServiceCard = ({ service }) => {
               {serviceDescription}
             </p>
           </div>
-          <button className="mt-2 w-max mx-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center  mb-2 active:scale-95">
-            View Details
-          </button>
+          <div className="flex flex-col items-center justify-center">
+            <Link to={`/serviceDetails/${_id}`}>
+              <button className="mt-2 w-max mx-auto text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-10 py-2.5 text-center   mb-2 active:scale-95">
+                View Details
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

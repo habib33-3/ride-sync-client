@@ -8,6 +8,7 @@ import PrivateRouter from "./PrivateRouter";
 import AddService from "../pages/AddService/AddService";
 import AllServices from "../pages/AllServices/AllServices";
 import useAxios from "../hooks/useAxios";
+import Details from "../pages/Details/Details";
 
 const axios = useAxios();
 
@@ -45,6 +46,18 @@ export const router = createBrowserRouter([
         path: "/services",
         element: <AllServices />,
         loader: () => axios.get("/services"),
+      },
+
+      {
+        path: "/serviceDetails/:id",
+        element: (
+          <PrivateRouter>
+            <Details />
+          </PrivateRouter>
+        ),
+        // loader: ({ params }) => {
+        //   axios.get(`/details/${params.id}`);
+        // },
       },
     ],
   },
