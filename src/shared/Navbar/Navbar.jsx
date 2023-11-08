@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useAuth();
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const menuItems = (
     <>
@@ -36,7 +37,94 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <li className="bg-sky-100 shadow-sm p-2 rounded-md">Dashboard</li>
+        <li className="relative inline-block text-left">
+          <div
+            className="inline-flex cursor-pointer bg-sky-200 shadow-sm p-2 rounded-md hover:bg-sky-200 active:scale-95"
+            id="menu-button"
+            aria-expanded="true"
+            aria-haspopup="true"
+            onClick={() => setDropdownOpen(!isDropdownOpen)}
+          >
+            Dashboard
+            <svg
+              className="-mr-1 h-5 w-5 text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+
+          {isDropdownOpen && (
+            <div
+              className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y space-y-2 divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+              tabIndex={-1}
+            >
+              <div
+                className="py-1"
+                role="none"
+              >
+                <NavLink
+                  to="/manageService"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+                      : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
+                  }
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="menu-item-0"
+                >
+                  My Services
+                </NavLink>
+              </div>
+              <div
+                className="py-1"
+                role="none"
+              >
+                <NavLink
+                  to="/schedule"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+                      : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
+                  }
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="menu-item-1"
+                >
+                  My Schedule
+                </NavLink>
+              </div>
+              <div
+                className="py-1"
+                role="none"
+              >
+                <NavLink
+                  to="addService"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+                      : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
+                  }
+                  role="menuitem"
+                  tabIndex={-1}
+                  id="menu-item-2"
+                >
+                  Add Services
+                </NavLink>
+              </div>
+            </div>
+          )}
+        </li>
       )}
     </>
   );
@@ -104,9 +192,7 @@ const Navbar = () => {
               <div className="px-5 pb-6 pt-5">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
-                    <span>
-                      
-                    </span>
+                    <span></span>
                     <span className="font-bold">DevUI</span>
                   </div>
                   <div className="-mr-2">

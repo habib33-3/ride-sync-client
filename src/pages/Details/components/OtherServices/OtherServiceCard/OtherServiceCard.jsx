@@ -7,7 +7,7 @@ const OtherServiceCard = ({ service }) => {
   return (
     <div>
       <Link to={`/serviceDetails/${_id}`}>
-        <div className="bg-sky-100 w-full lg:w-72 mx-auto p-5 flex flex-col justify-center items-center gap-6 rounded-md shadow-xl">
+        <div className="bg-sky-100 w-full lg:w-72 mx-auto p-5 flex flex-col justify-center items-center gap-6 rounded-md shadow-xl active:scale-105 cursor-pointer hover:opacity-60">
           <img
             src={serviceImg}
             alt=""
