@@ -4,14 +4,16 @@ import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import ProviderInfo from "./components/ProviderInfo/ProviderInfo";
 import ServiceDetails from "./components/ServiceDetails/ServiceDetails";
+import useAuth from "../../hooks/useAuth";
 
 const Details = () => {
+  const { user } = useAuth();
   const axios = useAxios();
   const { id } = useParams();
   console.log(id);
 
   const getService = async () => {
-    const res = await axios.get(`/details/${id}`);
+    const res = await axios.get(`/details/${id}?email=${user.email}`);
     return res;
   };
 

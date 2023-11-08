@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: pic,
-    });
+  });
   };
 
   const authInfo = {
