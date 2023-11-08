@@ -34,7 +34,7 @@ const Services = () => {
         Top Services
       </h1>
       <div className="w-full mx-auto grid grid-cols-1  justify-center items-center gap-6">
-        {data?.data.slice(0, 4).map((service) => (
+        {data?.data?.slice(0, 4).map((service) => (
           <ServiceCard
             key={service._id}
             service={service}

@@ -1,35 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import { Helmet } from "react-helmet-async";
-import Skeleton from "react-loading-skeleton";
 import ManageServiceCard from "./components/ManageServiceCard/ManageServiceCard";
+import { useEffect, useState } from "react";
 
 const ManageService = () => {
   const { user } = useAuth();
   const axios = useAxios();
+  const [services, setServices] = useState([]);
 
-  const getServices = async () => {
-    const res = await axios.get(`/manageService/?email=${user.email}`);
-    return res;
-  };
+  useEffect(() => {
+    axios.get(`/manageService/?email=${user.email}`).then((data) => {
+      console.log(data.data);
+      setServices(data.data);
+    });
+  }, [axios, user.email]);
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["servicesByUser"],
-    queryFn: getServices,
-  });
-
-  //   console.log(data);
-
-
-  if (isError) {
-    return <p className="text-3xl text-center">Something Went Wrong...</p>;
-  }
-
-  if (isLoading) {
-    return <Skeleton count={5} />;
-  }
-  const services = data?.data;
   return (
     <div className="max-w-6xl mx-auto mt-10">
       <Helmet>
@@ -47,6 +33,8 @@ const ManageService = () => {
             <ManageServiceCard
               key={service._id}
               service={service}
+              setServices={setServices}
+              services={services}
             />
           ))}
         </div>
