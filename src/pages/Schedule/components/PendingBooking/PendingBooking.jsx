@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../../../../hooks/useAuth";
 import useAxios from "../../../../hooks/useAxios";
-import { useEffect } from "react";
 import PendingBookingCard from "./PendingBookingCard/PendingBookingCard";
 
 const PendingBooking = () => {
