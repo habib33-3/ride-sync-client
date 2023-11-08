@@ -10,6 +10,7 @@ import AllServices from "../pages/AllServices/AllServices";
 import useAxios from "../hooks/useAxios";
 import Details from "../pages/Details/Details";
 import ManageService from "../pages/ManageService/ManageService";
+import UpdateService from "../pages/UpdateService/UpdateService";
 
 const axios = useAxios();
 
@@ -65,6 +66,16 @@ export const router = createBrowserRouter([
             <ManageService />
           </PrivateRouter>
         ),
+      },
+
+      {
+        path: "/updateService/:id",
+        element: (
+          <PrivateRouter>
+            <UpdateService />
+          </PrivateRouter>
+        ),
+        // loader: ({ params }) => axios.get(`details/${params.id}`),
       },
     ],
   },

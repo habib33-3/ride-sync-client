@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import useAxios from "../../../../hooks/useAxios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageServiceCard = ({ service, setServices, services }) => {
   const { serviceName, serviceImg, _id } = service;
@@ -42,9 +43,11 @@ const ManageServiceCard = ({ service, setServices, services }) => {
       </div>
       <div>
         <div className="flex justify-center items-center gap-6">
-          <button className="bg-blue-600 px-4 py-2 text-white rounded-md font-bold active:scale-95">
-            Update
-          </button>
+          <Link to={`/updateService/${_id}`}>
+            <button className="bg-blue-600 px-4 py-2 text-white rounded-md font-bold active:scale-95">
+              Update
+            </button>
+          </Link>
           <button
             onClick={handleDeleteService}
             className="bg-red-600 px-4 py-2 text-white rounded-md font-bold active:scale-95"
