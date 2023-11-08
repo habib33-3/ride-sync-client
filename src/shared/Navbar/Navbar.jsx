@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useAuth();
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const menuItems = (
     <>
@@ -38,12 +38,12 @@ const Navbar = () => {
 
       {user && (
         <li className="relative inline-block text-left">
-          <div
+          <button
             className="inline-flex cursor-pointer bg-sky-200 shadow-sm p-2 rounded-md hover:bg-sky-200 active:scale-95"
             id="menu-button"
             aria-expanded="true"
             aria-haspopup="true"
-            onClick={() => setDropdownOpen(!isDropdownOpen)}
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             Dashboard
             <svg
@@ -58,7 +58,7 @@ const Navbar = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </div>
+          </button>
 
           {isDropdownOpen && (
             <div
@@ -129,10 +129,6 @@ const Navbar = () => {
     </>
   );
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   const handleLogout = () => {
     logOut()
       .then(() => {
@@ -182,7 +178,7 @@ const Navbar = () => {
         {/* small device */}
         <div className="lg:hidden">
           <Menu
-            onClick={toggleMenu}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="h-6 w-6 cursor-pointer"
           />
         </div>
@@ -198,7 +194,7 @@ const Navbar = () => {
                   <div className="-mr-2">
                     <button
                       type="button"
-                      onClick={toggleMenu}
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
                       className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
                       <span className="sr-only">Close menu</span>
