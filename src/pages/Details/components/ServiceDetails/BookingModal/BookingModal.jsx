@@ -27,8 +27,6 @@ const BookingModal = ({ isOpen, onClose, service }) => {
       instruction,
     };
 
-    // console.log(booking);
-
     axios.post("/addBooking", booking).then((data) => {
       console.log(data.data);
       if (data.data.insertedId) {

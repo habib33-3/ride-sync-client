@@ -8,11 +8,11 @@ const UsersBooking = () => {
   const axios = useAxios();
   const { user } = useAuth();
   const [services, setServices] = useState([]);
-  console.log(user.email);
+
 
   useEffect(() => {
     axios.get(`/user/bookings?email=${user?.email}`).then((data) => {
-      console.log(data.data);
+    
       setServices(data.data);
     });
   }, [axios, user?.email]);
