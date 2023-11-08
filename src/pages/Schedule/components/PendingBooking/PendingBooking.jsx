@@ -30,7 +30,9 @@ const PendingBooking = () => {
           ))}
         </div>
       ) : (
-        <div></div>
+        <div className="text-center text-6xl font-bold text-gray-700 my-10 ">
+          <h1>No booking pending!!!</h1>
+        </div>
       )}
     </div>
   );
