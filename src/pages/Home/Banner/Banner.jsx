@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import img1 from "../../../assets/Banner/garageCar.jpg";
 import img2 from "../../../assets/Banner/late.jpg";
 import img3 from "../../../assets/Banner/longRide.jpg";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const slides = [
   {
@@ -31,9 +32,18 @@ const Banner = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
         navigation={true}
-        modules={[Navigation]}
-        className="w-full  flex justify-center items-center mt-5 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-900"
+        modules={[Autoplay, Pagination, Navigation]}
+        className="w-full flex justify-center items-center mt-10 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 p-8 rounded-lg shadow-lg"
         // style={{ background: "url('../../../assets/Banner/bg.svg')" }}
       >
         {slides.map((slide) => (
@@ -42,10 +52,10 @@ const Banner = () => {
               <img
                 src={slide.img}
                 alt=""
-                className="w-1/2 h-[300px]"
+                className="w-1/2 h-[300px] rounded-lg shadow-lg object-cover"
               />
-              <div className=" px-5 rounded-3xl h-[400px] bg-no-repeat bg-content w-1/2 bg-gradient-to-b from-blue-600 via-teal-500 to-blue-800">
-                <h1 className="text-center text-3xl text-gradient bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 text-black dark:from-gray-600 dark:via-gray-700 dark:to-gray-800 bg-clip-text text-transparent font-semibold flex flex-col items-center justify-center h-full rounded-3xl">
+              <div className="px-8 py-6 rounded-3xl h-[400px] bg-cover bg-center w-1/2 bg-gradient-to-b from-gray-300 via-gray-500 to-gray-600 shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                <h1 className="text-center text-4xl text-gradient bg-gradient-to-r from-gray-400 via-gray-500 to-gray-1000 text-white dark:from-gray-300 dark:via-gray-500 dark:to-gray-700 bg-clip-text font-extrabold leading-tight flex flex-col items-center justify-center h-full rounded-3xl">
                   {slide.title}
                 </h1>
               </div>

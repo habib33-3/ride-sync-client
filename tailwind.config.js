@@ -5,9 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/preline/dist/*.js",
   ],
- 
+
   theme: {
     extend: {},
   },
-  plugins: [require("preline/plugin"), [require("daisyui")]],
+  plugins: [require("preline/plugin"), require("daisyui")],
 };
