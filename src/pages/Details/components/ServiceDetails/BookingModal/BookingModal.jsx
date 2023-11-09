@@ -25,6 +25,7 @@ const BookingModal = ({ isOpen, onClose, service }) => {
       userEmail: user.email,
       date,
       instruction,
+      status: "pending",
     };
 
     axios.post("/addBooking", booking).then((data) => {

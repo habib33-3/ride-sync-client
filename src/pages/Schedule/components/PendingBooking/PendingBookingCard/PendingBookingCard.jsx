@@ -28,7 +28,7 @@ const PendingBookingCard = ({ service }) => {
 
     const booking = { status };
 
-    axios.post(`/booking/setStatus/${_id}`, booking).then((data) => {
+    axios.put(`/booking/setStatus/${_id}`, booking).then((data) => {
       console.log(data);
     });
   };
