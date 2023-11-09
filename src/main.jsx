@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./provider/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "react-loading-skeleton/dist/skeleton.css";
+
 import('preline')
 
 const queryClient = new QueryClient();

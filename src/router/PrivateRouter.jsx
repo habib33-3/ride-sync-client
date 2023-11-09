@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import useAuth from "../hooks/useAuth";
-import Skeleton from "react-loading-skeleton";
 import { Navigate } from "react-router-dom";
+import Loading from "../components/Loading/Loading";
 
 const PrivateRouter = ({ children }) => {
   const { loading, user } = useAuth();
 
   if (loading) {
-    return <Skeleton count={5} />;
+    return <Loading/>;
   }
 
   if (user) {

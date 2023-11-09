@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../hooks/useAxios";
-import Skeleton from "react-loading-skeleton";
 import ServiceCard from "../../../components/ServiceCard/ServiceCard";
 import { Link } from "react-router-dom";
+import Loading from "../../../components/Loading/Loading";
 
 const Services = () => {
   const axios = useAxios();
@@ -24,8 +24,10 @@ const Services = () => {
     return <p className="text-3xl text-center">Something Went Wrong...</p>;
   }
 
-  if (isLoading) {
-    return <Skeleton count={5} />;
+ 
+
+  if(isLoading){
+    return <Loading/>
   }
 
   return (

@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
-import Skeleton from "react-loading-skeleton";
 import ProviderInfo from "./components/ProviderInfo/ProviderInfo";
 import ServiceDetails from "./components/ServiceDetails/ServiceDetails";
 import useAuth from "../../hooks/useAuth";
 import OtherServices from "./components/OtherServices/OtherServices";
+import Loading from "../../components/Loading/Loading";
 
 const Details = () => {
   const { user } = useAuth();
@@ -23,7 +23,7 @@ const Details = () => {
   });
 
   if (isLoading) {
-    return <Skeleton count={5} />;
+    return <Loading/>;
   }
 
   if (isError) {

@@ -34,7 +34,7 @@ const ManageServiceCard = ({ service, setServices, services }) => {
       <div className="border-r border-2">
         <img
           src={serviceImg}
-          alt=""
+          alt={`${serviceName}`}
           className="w-52 h-44 rounded-lg"
         />
       </div>
@@ -44,13 +44,13 @@ const ManageServiceCard = ({ service, setServices, services }) => {
       <div>
         <div className="flex justify-center items-center gap-6">
           <Link to={`/updateService/${_id}`}>
-            <button className="bg-blue-600 px-4 py-2 text-white rounded-md font-bold active:scale-95">
+            <button className="bg-blue-600 hover:bg-blue-700 hover:shadow-xl px-4 py-2 text-white rounded-md font-bold active:scale-95">
               Update
             </button>
           </Link>
           <button
             onClick={handleDeleteService}
-            className="bg-red-600 px-4 py-2 text-white rounded-md font-bold active:scale-95"
+            className="bg-red-600 hover:bg-red-700 hover:shadow-xl px-4 py-2 text-white rounded-md font-bold active:scale-95"
           >
             Delete
           </button>
