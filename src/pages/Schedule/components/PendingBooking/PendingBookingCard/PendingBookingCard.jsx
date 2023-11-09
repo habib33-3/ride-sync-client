@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAxios from "../../../../../hooks/useAxios";
 
 const PendingBookingCard = ({ service }) => {
-  const  [status, setStatus]  = useState("pending");
+  const axios = useAxios();
+  const [status, setStatus] = useState("pending");
   const {
     serviceName,
     serviceImg,
@@ -10,11 +12,25 @@ const PendingBookingCard = ({ service }) => {
     instruction,
     servicePrice,
     userEmail,
+    _id,
   } = service;
+
+  useEffect(() => {
+    if (service.status) {
+      setStatus(service.status);
+    } else {
+      setStatus("pending");
+    }
+  }, [service.status]);
 
   const handleChangeStatus = (e) => {
     setStatus(e.target.value);
-    
+
+    const booking = { status };
+
+    axios.post(`/booking/setStatus/${_id}`, booking).then((data) => {
+      console.log(data);
+    });
   };
 
   return (
@@ -41,12 +57,12 @@ const PendingBookingCard = ({ service }) => {
         </p>
       </div>
 
-      <div>
+      <div className="flex gap-2 items-center justify-center mt-4">
         <label htmlFor="status">Set Status</label>
         <select
           name="status"
           id=""
-          defaultValue={status}
+          value={status}
           onChange={handleChangeStatus}
         >
           <option value="pending">Pending</option>

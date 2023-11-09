@@ -15,8 +15,10 @@ const PendingBooking = () => {
     });
   }, [axios, user.email]);
 
+  
+
   return (
-    <div className="mt-5 max-w-6xl mx-auto">
+    <div className="mt-10 max-w-6xl mx-auto">
       <h1 className="text-4xl font-bold text-blue-700 text-center my-5">
         My Bookings
       </h1>
