@@ -47,7 +47,15 @@ const AuthProvider = ({ children }) => {
         email: currentUser?.email,
       };
 
-      axios.post("/createToken", userInfo).then((data) => console.log(data.data));
+      if (currentUser) {
+        axios
+          .post("/createToken", userInfo)
+          .then((data) => console.log(data.data));
+      } else {
+        axios.post("/logOut", userInfo).then((data) => {
+          console.log(data);
+        });
+      }
     });
     return () => {
       return () => unSubscribe();
@@ -63,7 +71,7 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: pic,
-  });
+    });
   };
 
   const authInfo = {
