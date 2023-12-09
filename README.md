@@ -1,6 +1,15 @@
 # RideSync
 
-[https://ride-sync-client.vercel.app/]
+## [Live Link](https://ride-sync-client.vercel.app/)
+
+## Built With
+
+- Frontend: Reactjs, TailwindCSS
+- Backend: Expressjs
+- Database: MongoDB
+- Authentication: Firebase, JWT
+
+### [server code](https://github.com/habib33-3/ride-sync-server)
 
 ## Features
 
