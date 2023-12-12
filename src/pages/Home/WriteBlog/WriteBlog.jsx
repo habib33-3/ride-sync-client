@@ -1,4 +1,5 @@
 import { Typewriter } from "react-simple-typewriter";
+import { Link } from "react-router-dom";
 
 const WriteBlog = () => {
   return (
@@ -14,6 +15,13 @@ const WriteBlog = () => {
             loop={false}
           />
         </span>
+      </div>
+      <div className="flex flex-col items-center justify-center">
+        <Link to="/writeNow">
+          <button className="px-8 py-3 mt-4 font-semibold bg-purple-700 text-white rounded-full dark:bg-gray-100 dark:text-gray-800">
+            Write Now
+          </button>
+        </Link>
       </div>
     </div>
   );

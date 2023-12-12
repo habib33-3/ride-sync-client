@@ -4,8 +4,8 @@
 
 ## Built With
 
-- Frontend: Reactjs, TailwindCSS
-- Backend: Expressjs
+- Frontend: ReactJs, TailwindCSS
+- Backend: ExpressJs
 - Database: MongoDB
 - Authentication: Firebase, JWT
 
@@ -17,4 +17,4 @@
 2. User can browse and book services.
 3. User and Provider both can see their booked or pending services on schedule page.
 4. User can create account and log in.
-5. All the booking information is behind JWT security,ony logged in user can see them.
+5. All the booking information is behind JWT security,only logged in user can see them.

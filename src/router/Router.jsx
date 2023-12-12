@@ -12,6 +12,7 @@ import Details from "../pages/Details/Details";
 import ManageService from "../pages/ManageService/ManageService";
 import UpdateService from "../pages/UpdateService/UpdateService";
 import Schedule from "../pages/Schedule/Schedule";
+import WriteNow from "../pages/WriteNow/WriteNow";
 
 const axios = useAxios();
 
@@ -83,6 +84,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Schedule />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/writeNow",
+        element: (
+          <PrivateRouter>
+            <WriteNow />
           </PrivateRouter>
         ),
       },
