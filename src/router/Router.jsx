@@ -13,6 +13,8 @@ import ManageService from "../pages/ManageService/ManageService";
 import UpdateService from "../pages/UpdateService/UpdateService";
 import Schedule from "../pages/Schedule/Schedule";
 import WriteNow from "../pages/WriteNow/WriteNow";
+import Blogs from "../pages/Blogs/Blogs";
+import Blog from "../pages/Blog/Blog";
 
 const axios = useAxios();
 
@@ -94,6 +96,16 @@ export const router = createBrowserRouter([
             <WriteNow />
           </PrivateRouter>
         ),
+      },
+
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+
+      {
+        path: "/blog/:id",
+        element: <Blog />,
       },
     ],
   },
