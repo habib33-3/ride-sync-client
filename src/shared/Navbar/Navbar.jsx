@@ -23,6 +23,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -33,6 +34,32 @@ const Navbar = () => {
           to="/services"
         >
           Services
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+              : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
+          }
+          to="/writeNow"
+        >
+          Write Blog
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "bg-sky-300 font-bold shadow-sm p-2 rounded-md hover:bg-sky-400"
+              : "bg-sky-100 shadow-sm p-2 rounded-md hover:bg-sky-400 "
+          }
+          to="/blogs"
+        >
+          Blogs
         </NavLink>
       </li>
 
